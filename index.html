@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <style>
+       
+       .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 10px; 
+    }
+
+    .page-item {
+        padding: 10px;
+    }
+
+    .page-item.active {
+        background-color: skyblue;  
+        color: white;
+    }
+        .navbar {
+            width: 100vw;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            margin-top: 0px;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+        .divider{
+            width: 99vw;
+            height: 1px;
+            background-color: grey;
+        }
+        .buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px; 
+    }
+
+        .navbar h1 {
+            margin: 0;
+            color: white;
+        }
+        .navbar h2 {
+            margin: 0;
+            color: white;
+        }
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 10px;
+        }
+       
+        .navbar a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+            padding: 5px 10px;  
+        }
+        .navbar a:hover {
+            background-color: skyblue;  
+        }
+        .navbar a.active {
+            background-color: skyblue;  
+        }
+        .select{
+            width: 80px;
+            height: 30px;
+        }
+        .word-list1 {
+    list-style-type: none;
+    padding: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+.book-list-item1 {
+    display: flex;
+    align-items: start;
+    font-weight: 700;
+    flex-direction: row;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+.book-list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+.word-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid #e0e0e0;
+}
+.book-list-item1 span {
+    margin-right: 15vw;
+}
+
+.word-list-item.even {
+    background-color: #f0f0f0;  
+}
+footer {
+    flex-shrink: 0;  
+    background-color: #f8f8f8;  
+    padding: 10px;
+    text-align: center;
+}
+
+        @media (max-width: 610px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center; 
+                height: auto;
+                padding: 10px;
+            }
+            .navbar ul {
+                margin-top: 10px;
+            }
+            .buttons {
+            flex-direction: row; 
+            gap: 10px;
+        }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="navbar">
+        <h1  style="color: black;">My Library</h1>
+        <ul>
+            <li><a href="#" style="background-color: skyblue; width: fit-content; height: max-content;">Home</a></li>
+            <li><a href="#" style="color: skyblue;">Features</a></li>
+            <li><a href="#" style="color: skyblue;">Pricing</a></li>
+            <li><a href="#" style="color: skyblue;">About</a></li>
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="navbar" style="margin-top: 20px;">
+        <h2  style="color: black;">Book List</h2>
+        <div class="buttons" style="margin-right: 20px;">
+           
+            <select class="select">
+                <option>Genre</option>
+                <option>Love</option>
+                <option>Fantasy</option>
+                <option>SF</option>
+            </select>
+            <input style="width: 15vw; height: 30px; border-radius: 3px" type="text" id="searchInput" placeholder="search" >
+            <input style="width: 60px; height: 30px; border-radius: 3px; background-color: white; color: green" type="button" value="Search"
+            
+          />            <input
+              style="width: 50px; height: 30px; border-radius: 3px; background-color: green; color: #fff"
+              type="button"
+              value="Add"
+              onclick="redirectToAnotherPage()"
+            />
+        </div>
+       
+    </div>
+    <div class="divider"></div>
+
+    <div class="book-list">
+        <div class="book-list-item1">
+            <span>#</span>
+      
+            <span class="class1">Book</span>
+            
+            <span class="class11">Author</span>
+            <span class="class2">Publisher</span>
+            <span class="class3">Published</span>
+            <span class="class4">Menu</span>
+        </div>
+    </div>
+        <div class="word-list">
+            <div class="book-list-item">
+            </div>
+            </div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+
+        </ul>
+    </nav>
+   
+</div>
+
+<script>
+    var books = [
+        { id:1,author:"CS Lewis",book: "Narnia", date: "2002", meaning: "그림판"},
+        {id:2,author:"Gandalf",book: "Lord of Rings", meaning: "그림판", date: "2022-09-28"},
+        {id:3,author:"Monkey",book: "Tarzan", meaning: "그림판", date: "2022-09-28"},
+        {id:4,author:"Juhyun",book: "C++", meaning: "그림판", date: "2022-09-28"},
+        {id:5,author:"Martin",book: "The Ocean", meaning: "그림판", date: "2022-09-28"},
+        {id:6,author:"George Lukas",book: "New Hope", meaning: "그림판", date: "2022-09-28"},
+        {id:7,author:"George Lukas",book: "New Hope", meaning: "그림판", date: "2022-09-28"},
+        {id:8,author:"George Lukas",book: "New Hope", meaning: "그림판", date: "2022-09-28"},
+        {id:9,author:"George Lukas",book: "New Hope", meaning: "그림판", date: "2022-09-28"},
+        {id:10,author:"George Lukas",book: "New Hope", meaning: "그림판", date: "2022-09-28"},
+        {id:11,author:"George Lukas",book: "New Hope", meaning: "그림판", date: "2022-09-28"},
+        {id:12,author:"George Lukas",book: "New Hope", meaning: "그림판", date: "2022-09-28"},
+        {id:13,author:"George Lukas",book: "New Hope", meaning: "그림판", date: "2022-09-28"},
+        
+    ];
+    var itemsPerPage = 10;
+    var currentPage = 1;
+    var searchTerm = ''; 
+
+    function updateWordList() {
+        var startIndex = (currentPage - 1) * itemsPerPage;
+        var endIndex = startIndex + itemsPerPage;
+        var totalPages = Math.ceil(books.length / itemsPerPage);
+        var bookList = document.querySelector('.word-list');
+        bookList.innerHTML = '';
+
+        for (var i = startIndex; i < endIndex && i < books.length; i++) {
+            var item = books[i];
+            var evenClass = item.id % 2 === 0 ? 'even' : '';
+            var bookItem = `
+            <div style="cursor:pointer" class="word-list-item ${evenClass}" onclick="viewpage(
+                ${item.id}, '${item.book}','${item.author}', '${item.meaning}', '${item.date}')">
+                <span>${item.id}</span>
+              
+                <span>${item.book}</span>
+                <span>${item.author}</span>
+                <span>${item.meaning}</span>
+                <span>${item.date}</span>
+                <span>
+                    <div class="icon-container">
+                        <img src="pencil.svg" alt="Edit">
+                        <img src="trash.svg" alt="Delete">
+                    </div>
+                </span>
+            </div>
+        `;
+        bookList.insertAdjacentHTML('beforeend', bookItem);
+        }
+
+        updatePagination(totalPages);
+    }
+
+    function updatePagination(totalPages) {
+        var pagination = document.querySelector('.pagination');
+        pagination.innerHTML = '';
+
+        for (var i = 1; i <= totalPages; i++) {
+            var pageItem = `
+                <li class="page-item ${i === currentPage ? 'active' : ''}">
+                    <a class="page-link" href="#" data-page="${i}">${i}</a>
+                </li>
+            `;
+            pagination.insertAdjacentHTML('beforeend', pageItem);
+        }
+    }
+
+    document.querySelector('.pagination').addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+            currentPage = parseInt(e.target.getAttribute('data-page'));
+            updateWordList();
+        }
+    });
+
+    function displayWords(wordsToDisplay) {
+        books = wordsToDisplay;
+        currentPage = 1;
+        updateWordList();
+    }
+
+    function redirectToAnotherPage() {
+        var newPageUrl = 'https://spproject2final22000747.netlify.app/add'; 
+        window.location.href = newPageUrl;
+    }
+    function viewpage(id, book,author, meaning, date) {
+        var newPageUrl = 'view.html?id=' + id + '&book=' + encodeURIComponent(book)+'&author=' + encodeURIComponent(author) + '&meaning=' + encodeURIComponent(meaning) + '&date=' + encodeURIComponent(date);
+        window.location.href = newPageUrl;
+    }
+    
+    window.addEventListener('load', function () {
+        displayWords(books);
+    });
+
+    function filterWords() {
+        searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        var filteredWords;
+    
+        if (searchTerm === '') {
+            displayWords(books);
+        } else {
+            filteredWords = books.filter(function (word) {
+                return word.book.toLowerCase().includes(searchTerm);
+            });
+            displayWords(filteredWords);
+        }
+    }    
+    document.getElementById('searchInput').addEventListener('input', function () {
+        if (document.getElementById('searchInput').value === '') {
+            displayWords(books);
+        }
+    });
+</script>
+</body>
+</html>

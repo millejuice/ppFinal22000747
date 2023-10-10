@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Book</title>
+    <link rel="stylesheet" href="my.css">
+    <style>
+        h1,
+        .action-buttons {
+            text-align: center;
+        }
+
+        .action-buttons {
+            margin-top: 20px;
+        }
+
+        .submit {
+            margin: 0 10px;
+            padding: 10px 20px;
+        }
+
+        .book-details {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .book-details label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .book-details p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>책 조회하기</h1>
+    <div class="book-details" id="book-details">
+    </div>
+
+    <script>
+        function getQueryParameter(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var id = getQueryParameter('id');
+            var book = getQueryParameter('book');
+            var author = getQueryParameter('author');
+            var meaning = getQueryParameter('meaning');
+            var date = getQueryParameter('date');
+
+
+            var detailsDiv = document.getElementById('book-details');
+            detailsDiv.innerHTML = `
+                <p><label>ID:</label> ${id}</p>
+                <p><label>Book:</label> ${book}</p>
+                <p><label>Author:</label> ${author}</p>
+                <p><label>Publisher:</label> ${meaning}</p>
+                <p><label>Date:</label> ${date}</p>
+            `;
+
+            document.getElementById('deleteButton').addEventListener('click', function () {
+                var isConfirmed = confirm('게시물을 삭제할까요?');
+                if (isConfirmed) {
+                    alert('게시물이 삭제되었습니다.');
+                }
+            });
+
+            document.getElementById('editButton').addEventListener('click', function () {
+                location.href = `edit.html?id=${id}&book=${book}&author=${author}&meaning=${meaning}&date=${date}`;
+            });
+
+        });
+
+    </script>
+    <div class="action-buttons" style="align-items: center; justify-content: center; color: skyblue;">
+        <input class="submit" type="submit" value="Edit" id="editButton" style="background-color: skyblue;">
+        <input class="submit" type="submit" value="Delete" id="deleteButton" style="background-color: skyblue;">
+        <input class="submit" type="submit" value="BACK" onClick="history.go(-1)" style="background-color: skyblue;">
+    </div>
+</body>
+
+</html>

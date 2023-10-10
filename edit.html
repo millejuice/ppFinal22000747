@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Books</title>
+</head>
+<body>
+    <h1>책 수정하기</h1>
+    <form action="#" method="post" onsubmit="validateForm(event);">
+        <label for="book">Book:</label>
+        <input type="text" id="book" name="book" value="" required><br><br>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" value="" required><br><br>
+        <label for="meaning">Meaning:</label>
+        <input type="text" id="meaning" name="meaning" value="" required><br><br>
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" value="" required><br><br>
+        <input type="submit" value="Update">
+        <input type="button" value="BACK" onClick="history.go(-1)"> 
+    </form>
+    <script>
+        function getQueryParameter(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('book').value = getQueryParameter('book');
+            document.getElementById('author').value = getQueryParameter('author');
+            document.getElementById('meaning').value = getQueryParameter('meaning');
+            document.getElementById('date').value = getQueryParameter('date');
+        });
+
+        function validateForm(event) {
+            event.preventDefault();
+            var book = document.getElementById('book').value;
+            var author = document.getElementById('author').value;
+            var meaning = document.getElementById('meaning').value;
+            var date = document.getElementById('date').value;
+
+            if (book.trim() === '' || author.trim() === '' || meaning.trim() === '' || date.trim() === '') {
+                alert('모든 필드를 입력해야 합니다!');
+                return false;
+            }
+            else {
+                var isConfirmed = confirm('게시물을 수정할까요?');
+                if (isConfirmed) {
+                    alert('게시물이 수정되었습니다!');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

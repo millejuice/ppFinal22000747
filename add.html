@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책 추가</title>
+    <link rel="stylesheet" href="my.css">
+
+</head>
+
+<body class="addbody">
+    <h1 class="h1h1">책 추가하기</h1>
+    <form id="postForm" onsubmit="validateForm(event)">
+
+        <h2 class="h1h1">Add Book</h2>
+
+        <div class="webbox">
+            <div class="div">
+                <label class="label" for="postId">ID:</label>
+                <input style="width:80%" class="text" type="text" id="postId" name="id" required>
+            </div>
+
+            <div class="div">
+                <label class="label" for="postWord">Book:</label>
+                <input style="width:80%" class="text" type="text" id="postBook" name="book" required>
+            </div>
+        </div>
+        <div class="webbox">
+            <div class="div">
+                <label class="label" for="postlevel">Author:</label>
+                <div class="div1">
+                    <input style="width:80%" class="text" type="text" id="postAuthor" name="author" required>
+                    <div style="width:80%" class="text" id="postlevel">작가</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="webbox">
+            <div class="div">
+                <label class="label" for="postMeaning">ISBN:</label>
+                <input style="width:80%" class="text" type="text" id="postISBN" name="ISBN" required>
+            </div>
+
+            <div class="div">
+                <label class="label" for="postDate">Published:</label>
+                <input style="width:80%" class="text" type="text" id="postDate" name="published" required>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+            <input type="submit" value="추가" style="width: 60px; height: 30px; background-color: skyblue; outline: none; border: none;">
+        </div>
+    </form>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            var id = document.getElementById('postId').value;
+            var book = document.getElementById('postBook').value;
+            var ISBN = document.getElementById('postISBN').value;
+            var date = document.getElementById('postDate').value;
+            var author = document.getElementById('postAuthor').value;
+            if (id.trim() === '' || book.trim() === '' || ISBN.trim() === '' || date.trim() === '' || author.trim() === '') {
+                alert('모든 필드를 입력해야 합니다!');
+                return false;
+            }
+            else {
+                alert('게시물이 추가되었습니다!');
+            }
+        }
+    </script>
+</body>
+
+</html>
